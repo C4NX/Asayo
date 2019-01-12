@@ -1,3 +1,5 @@
 UPDATE [BETA-1.1] - 12/01/2019
 
 -New On Gitub (not source but there comming)
+-Small change on class filenames
+-Adding 2 new bot title
