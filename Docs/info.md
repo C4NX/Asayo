@@ -65,8 +65,11 @@ embed([embed]); = create a new embed
   new_embed1:description("I am fine ;D");
   new_embed2:description("Me too ;D");
 ```
+## Api Module :
 
-## Objects : 
+ api.get(url) = Request GET return <HttpResultObject>
+
+# Objects : 
 
 ==============LuaEventHandler=============
 
@@ -175,12 +178,22 @@ embed([embed]); = create a new embed
  <MessageArgsObject>:respond("",myembed);
 ```
 
+============HttpResultObject============
 
-
+:isSuccess() = get if request success
+```lua
+ if(<HttpResultObject>:isSuccess()) then
+      --insert your code here
+ end
+```
+:readstring() = read string response
+```lua
+ local str = <MessageArgsObject>:readstring();
+```
 
 ## Events Args :
 
-AsayoBotObject:onmessage => MessageArgsObject
+<AsayoBotObject>:onmessage => <MessageArgsObject>
 
 
 
