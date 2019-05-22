@@ -57,10 +57,25 @@ files(dir,patern) = Get all File With Patern
 ============MessageArgsObject=============
 
 :user() = Get a DiscordUserObject
+```lua
+  local user = <DiscordUserObject>:user();
+  print(user:nick());--Print the user nickname
+```
 :channel_Id() = The the message channel id
+```lua
+  print(<DiscordUserObject>:channel_Id());
+```
 :message() = get the message string
+```lua
+  local str = <MessageArgsObject>:message();
+  if(str == "test") then
+      --do action here
+  end
+```
 :respond(msg) = simple respond with string
+```lua
 
+```
 
 
 
