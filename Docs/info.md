@@ -188,12 +188,12 @@ embed([embed]); = create a new embed
 ```
 :readstring() = read string response
 ```lua
- local str = <MessageArgsObject>:readstring();
+ local str = <HttpResultObject>:readstring();
 ```
 
 ## Events Args :
 
-<AsayoBotObject>:onmessage => <MessageArgsObject>
+<AsayoBotObject>:onmessage => MessageArgsObject
 
 
 
