@@ -1,0 +1,2 @@
+﻿AsayoDiscordBot.exe clear
+pause
