@@ -4,6 +4,8 @@ Asayo is a beta c# discord bot who use **MoonSharp/Lua** to work
 
 The bot is now not very optimized but I work on :D
 
+Docs Link : [Page](https://github.com/C4NX/Asayo/blob/master/Docs/info.md)
+
 ## Simple Command Handler With ASAYO.lua 
 ```lua
 local base = embed();
@@ -65,6 +67,14 @@ end
 start();
 
 ```
+# ToDo
+
+Order | Name | Percent
+--- | --- | ---
+*1* | **Optimisation/Api Developpement** | **~10%**
+*2* | **Guild/Channel/Member Management** | **0%**
+*3* | **Configuration Management** | **~5%**
+*4* | **Profil/User Management** | **~5%**
 
 # Invite
 
