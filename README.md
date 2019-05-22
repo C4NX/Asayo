@@ -1,6 +1,6 @@
 # Asayo
 
-Asayo is a beta c# discord bot who use **MoonSharp/Lua** to work
+Asayo is a beta c# discord bot who use **MoonSharp/Lua** and **DSharpPlus** to work
 
 The bot is now not very optimized but I work on :D
 
