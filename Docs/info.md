@@ -30,29 +30,79 @@ files(dir,patern) = Get all File With Patern
 ==============LuaEventHandler=============
 
 :add(LuaFunction) = add a function in LuaEventHandler
-
+```lua
+<LuaEventHandler>:add(MyFunction);
+```
 :invoke([args…]) = invoke a LuaEventHandler
-
+```lua
+<LuaEventHandler>:inkoke("First string arg");
+```
 :remove(LuaFunction) = remove the LuaFunction of the Handler
-
+```lua
+<LuaEventHandler>:remove(MyFunction);
+```
 
 ==============LoggerObject================
 
 :info(str) = Log a str on Info Logger
+```lua
+<LoggerObject>:info("test");
+```
 :warn(str) = Log a str on Warning Logger
+```lua
+<LoggerObject>:warn("test");
+```
 :debug(str) = Log a str on Debug Logger
+```lua
+<LoggerObject>:debug("test");
+```
 :error(str) = Log a str on Error Logger
+```lua
+<LoggerObject>:error("test");
+```
 :fatal(str) = Log a str on Fatal Logger
+```lua
+<LoggerObject>:fatal("test");
+```
 
 ==============AsayoBotObject==============
 
 :onmessage(LuaFunction) = regiser a LuaFunction to receive message
+```lua
+  --Raw Message Handler
+  function onmsg(args,message_obj)
+	
+	  local user = message_obj:user();
+
+	  if(message_obj:isSelf()) then return; end
+	  if(message_obj:isBot())then return; end
+    
+    --insert your code here
+    
+   end
+
+
+  <AsayoBotObject>onmessage(onmsg);
+```
 :logger() = create a new logger
+```lua
+  local bot_logger = <AsayoBotObject>:logger();
+  bot_logger:info("INFO : MY LOGGER IS HERE");
+```
 ============DiscordUserObject============
 
 :nick() = Get the username
+```lua
+  print(<DiscordUserObject>:nick());--Print the nickname
+```
 :discriminator() = Get the Discriminator
+```lua
+  print(<DiscordUserObject>:discriminator());--Print the discriminator (#0010 for exemple)
+```
 :avatar(size) = Get the avatar link , default size is 1024
+```lua
+  print(<DiscordUserObject>:avatar(1024));--Print the user avatar url as 1024x1024 pixels
+```
 
 ============MessageArgsObject=============
 
