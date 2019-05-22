@@ -7,7 +7,7 @@ The bot is now not very optimized but I work on :D
 ## Simple Command Handler With ASAYO.lua 
 ```lua
 local base = embed();
-base:color("AB5C9B");
+base:color("AB5C9B");--hex color
 
 function exemple_cmd_handler(Command,ctx,user)
 	
@@ -32,7 +32,7 @@ end
 
 command_handler:add(exemple_cmd_handler);
 
-registerRespondCommand("hello",":loudspeaker: HELLO __**{0}**__");
+registerRespondCommand("advert",":loudspeaker: ADVERT :  __**{0}**__");--{0} is nickname
 
 ```
 
@@ -42,15 +42,6 @@ registerRespondCommand("hello",":loudspeaker: HELLO __**{0}**__");
 
 bot = instance();
 logger = bot:logger();
-
-command_handler = event();
-BasicRespondCommand = {};
-
---Utils
-function registerRespondCommand(command,msg)
-	BasicRespondCommand[command] = msg;
-end
-
 
 --Start Function
 function start() 
@@ -67,7 +58,7 @@ function onmsg(args,message_obj)
   
 	if(isPrefix(args[1],"!!")) then
 		local command_name = removePrefix(args[1],"!!");
-    if(command_name == "test") then message_obj:respond("Test Respond"); end
+    		if(command_name == "test") then message_obj:respond("Test Respond"); end
 	end
 end
 
