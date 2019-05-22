@@ -6,6 +6,8 @@ The bot is now not very optimized but I work on :D
 
 Docs Link : [Page](https://github.com/C4NX/Asayo/blob/master/Docs/info.md)
 
+![THUMB]: https://github.com/C4NX/Asayo/blob/master/thumb.PNG "Screenshot"
+
 ## Simple Command Handler With ASAYO.lua 
 ```lua
 local base = embed();
