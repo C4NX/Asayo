@@ -4,26 +4,67 @@
 ## Main Module : 
 
 instance();  = Get Instance of Asayo Bot
+```lua
+ local mybot = instance();
+```
 
 logger(); = Get the Global Logger of Asayo
-
+```lua
+ local mylogger = logger();
+```
 try(LuaFunction,[args...]); = Try Execute a LuaFunction
+```lua
+ function test(args) FunctionNotExit(args); end
+ try(test,"Go make some Top 1");
+```
 
 Or(value,Default); = return default value if value is Nil
 
 event(); = Create a new LuaEventHandler Object
-
+```lua
+  local myevent = event();
+```
 import(path); = Import a lua file in the bot (“same to dofile()”)
+```lua
+  import("myluafile.lua");
+```
 
 isPrefix(str,prefix) = Test if str start with prefix
+```lua
+  if(isPrefix("!!help","!!")) then
+  	--insert your code here
+  end
+```
 
 removePrefix(str,prefix) = remove the start prefix of str
-
-csformat(str,[args…]) = Format string with CSharp Formater
+```lua
+  local mystr = "!!help";
+  if(isPrefix(mystr,"!!")) then
+  	local command = removePrefix(mystr,"!!");--remove "!!" at start
+	--insert your code here
+  end
+```
+csformat(str,[args…]) = Format string with CSharp Formater ({0},{1} ect...)
+```lua
+  local str = csformat("my {0} string","cool");
+```
 
 files(dir,patern) = Get all File With Patern
+```lua
+  for key,value in pairs(files("MyDir\\","*.lua")) do
+	import(value);--import for exemple
+  end
+```
 
-
+embed([embed]); = create a new embed
+```lua
+  local myembed = embed();
+  myembed:color("AB5C9B");
+  local new_embed1 = embed(myembed);
+  local new_embed2 = embed(myembed);
+  new_embed1:description("I am fine ;D");
+  new_embed2:description("Me too ;D");
+```
 
 ## Objects : 
 
@@ -124,7 +165,14 @@ files(dir,patern) = Get all File With Patern
 ```
 :respond(msg) = simple respond with string
 ```lua
-
+ <MessageArgsObject>:respond("I am fine ;D");
+```
+:respond(msg,embed) = simple respond with string and embed
+```lua
+ local myembed = embed();
+ myembed:color("AB5C9B");
+ myembed:description("I am fine ;D");
+ <MessageArgsObject>:respond("",myembed);
 ```
 
 
