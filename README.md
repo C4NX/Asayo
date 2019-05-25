@@ -12,36 +12,18 @@ The bot is now not very optimized but I work on :D
 
 ![THUMB](https://github.com/C4NX/Asayo/blob/master/thumb.PNG "Screenshot")
 
-## Simple Command Handler With ASAYO.lua 
+## Simple Command
 ```lua
-local base = embed();
-base:color("AB5C9B");--hex color
-
-function exemple_cmd_handler(Command,ctx,user)
-	
-	if(Command == "avatar") then
-		local avatar_url = user:avatar(1024);
-		local n = embed(base);
-		n:description("Your avatar in 1024 pixels");
-		n:title("Avatar of " .. user:nick());
-		n:image(avatar_url);
-		ctx:respond("",n);
-		return;--close command
-	end
-	if(Command == "hello") then
-		ctx:respond("Hello " .. user:nick() .. ", How are you ?");
-		return;
-	end
-	if(Command == "NX") then
-		ctx:respond("BG ;D");
-		return;
-	end
+--uncompact
+function Hello(ctx)
+ ctx:respond("Hello :smile:");
 end
 
-command_handler:add(exemple_cmd_handler);
+commands.add("hello",Hello);
 
-registerRespondCommand("advert",":loudspeaker: ADVERT :  __**{0}**__");--{0} is nickname
 
+--compact
+ commands.add("hello",function(ctx) ctx:respond("Hello :smile:"); end);
 ```
 
 ## Simple Command Handler (Raw)
