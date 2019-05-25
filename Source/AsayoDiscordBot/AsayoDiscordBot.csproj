@@ -8,10 +8,11 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>AsayoDiscordBot</RootNamespace>
     <AssemblyName>AsayoDiscordBot</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,13 +35,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DSharpPlus, Version=3.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DSharpPlus.3.2.3\lib\net47\DSharpPlus.dll</HintPath>
-    </Reference>
-    <Reference Include="DSharpPlus.CommandsNext, Version=3.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DSharpPlus.CommandsNext.3.2.3\lib\net47\DSharpPlus.CommandsNext.dll</HintPath>
+      <HintPath>..\packages\DSharpPlus.3.2.3\lib\net45\DSharpPlus.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="DSharpPlus.VoiceNext, Version=3.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DSharpPlus.VoiceNext.3.2.3\lib\net47\DSharpPlus.VoiceNext.dll</HintPath>
+      <HintPath>..\packages\DSharpPlus.VoiceNext.3.2.3\lib\net45\DSharpPlus.VoiceNext.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="MoonSharp.Interpreter, Version=2.0.0.0, Culture=neutral, PublicKeyToken=921e73ce94aa17f8, processorArchitecture=MSIL">
       <HintPath>..\packages\MoonSharp.2.0.0.0\lib\net40-client\MoonSharp.Interpreter.dll</HintPath>
@@ -68,17 +68,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Asayo.cs" />
+    <Compile Include="Commands\CommandContext.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\CommandSystem.cs" />
+    <Compile Include="Commands\LuaCommand.cs" />
+    <Compile Include="Commands\TestCommand.cs" />
     <Compile Include="ConfigurationJson.cs" />
     <Compile Include="Data\BanList.cs" />
     <Compile Include="Data\GuildData.cs" />
     <Compile Include="Data\GuildList.cs" />
     <Compile Include="Data\GuildStats.cs" />
+    <Compile Include="Data\GuildVars.cs" />
     <Compile Include="Data\IDList.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Lua\LuaScript.cs" />
     <Compile Include="Lua\Modules\ApiModule.cs" />
     <Compile Include="Lua\Modules\BaseModule.cs" />
+    <Compile Include="Lua\Modules\CommandModule.cs" />
     <Compile Include="Lua\Userdatas\AsayoObject.cs" />
+    <Compile Include="Lua\Userdatas\CommandContextObject.cs" />
+    <Compile Include="Lua\Userdatas\CS\StopwatchObject.cs" />
     <Compile Include="Lua\Userdatas\WEB\HttpResultObject.cs" />
     <Compile Include="Lua\Userdatas\_DSharpPlus\DiscordEmbedObject.cs" />
     <Compile Include="Lua\Userdatas\_DSharpPlus\MessageArgsObject.cs" />
@@ -93,16 +102,14 @@
     <None Include="Asayo.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <Content Include="clear.bat">
+    <None Include="Clear.bat">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </None>
     <None Include="exemple.lua">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

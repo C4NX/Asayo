@@ -15,7 +15,9 @@ namespace AsayoDiscordBot.Data
             bans = new List<ulong>();
         }
 
-        public ulong this[int index] { get => ((IList<ulong>)bans)[index]; set => ((IList<ulong>)bans)[index] = value; }
+        public ulong this[int index] { get { return ((IList<ulong>)bans)[index]; }
+            set { ((IList<ulong>)bans)[index] = value; }
+        }
 
         public int Count => ((IList<ulong>)bans).Count;
 

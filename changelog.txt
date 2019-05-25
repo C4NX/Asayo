@@ -1,2 +1,15 @@
+(PRE-BUILD) UPDATE [BETA-1.02] - 20:50 25/05/2019
+-Added Command System
+-Updated LuaError Message
+-Fix some bug/problem
+-.Net Version was changed to lower
+-Removed DSharpPlus.CommandNext
+-Asayo.lua was updated
+-clear.bat was corrected
+-Added some console command (commands,stats (update))
+-Added CommandContextObject for reply and access to discord user/message
+-Added Simple GuildData System
+-Added Stopwatch Object 
+
 UPDATE [BETA-1.0] - 15:20 22/05/2019
 -DEFAULT UPDATE

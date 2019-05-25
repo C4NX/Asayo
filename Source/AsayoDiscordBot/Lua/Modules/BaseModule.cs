@@ -26,19 +26,6 @@ namespace AsayoDiscordBot.Lua.Modules
         [MoonSharpModuleMethod(Name = "try")]
         public static DynValue _try(ScriptExecutionContext ctx, CallbackArguments args)
         {
-            if(args.Count == 0) return DynValue.Nil;
-            if (args[0].Type == DataType.ClrFunction)
-            {
-                try
-                {
-                    args[0].Callback.Invoke(ctx, args.GetArray(), true);
-                }
-                catch (Exception)
-                {
-                    return DynValue.Nil;
-                }
-            }
-
             var func = args.AsType(0, "try", DataType.Function, false);
 
             try
@@ -130,7 +117,11 @@ namespace AsayoDiscordBot.Lua.Modules
         public static DynValue _jparse(ScriptExecutionContext ctx, CallbackArguments args)
         {
             var str = args.AsType(0, "jparse", DataType.String);
-            return DynValue.NewTable(MoonSharp.Interpreter.Serialization.Json.JsonTableConverter.JsonToTable(str.String));
+            try{
+				return DynValue.NewTable(MoonSharp.Interpreter.Serialization.Json.JsonTableConverter.JsonToTable(str.String));
+            }catch(Exception){
+            	return DynValue.NewPrimeTable();
+            }
         }
 
         [MoonSharpModuleMethod(Name = "embed")]
@@ -145,6 +136,43 @@ namespace AsayoDiscordBot.Lua.Modules
             {
                 return UserData.Create(new Userdatas._DSharpPlus.DiscordEmbedObject());
             }
+        }
+
+        [MoonSharpModuleMethod(Name = "guildData_set")]
+        public static DynValue _gdata_set(ScriptExecutionContext ctx, CallbackArguments args)
+        {
+            var guild = (ulong)args.AsType(0, "guildData_set", DataType.Number).Number;
+            var name = args.AsType(1, "guildData_set", DataType.String);
+            var value = args[2];
+            Asayo.Instance.GuildVars.RawSet(guild, name.String, value.ToObject());
+            return DynValue.True;
+        }
+
+        [MoonSharpModuleMethod(Name = "guildData_exset")]
+        public static DynValue _gdata_excreate(ScriptExecutionContext ctx, CallbackArguments args)
+        {
+            var guild = (ulong)args.AsType(0, "guildData_exset", DataType.Number).Number;
+            var name = args.AsType(1, "guildData_exset", DataType.String);
+            var value = args[2];
+            if (!Asayo.Instance.GuildVars.VarExist(guild, name.String))
+            {
+                Asayo.Instance.GuildVars.RawSet(guild, name.String, value.ToObject());
+            }
+            return DynValue.True;
+        }
+
+        [MoonSharpModuleMethod(Name = "guildData_get")]
+        public static DynValue _gdata_get(ScriptExecutionContext ctx, CallbackArguments args)
+        {
+            var guild = (ulong)args.AsType(0, "guildData_get", DataType.Number).Number;
+            var name = args.AsType(1, "guildData_get", DataType.String);
+            return Asayo.Instance.GuildVars.Get(ctx.OwnerScript, guild, name.String);
+        }
+
+        [MoonSharpModuleMethod(Name = "stopwatch")]
+        public static DynValue _stopwatch(ScriptExecutionContext ctx, CallbackArguments args)
+        {
+            return UserData.Create(new Userdatas.CS.StopwatchObject());
         }
     }
 }

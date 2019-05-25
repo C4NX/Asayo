@@ -24,3 +24,25 @@ C:\Users\Megaport\Documents\Visual Studio 2017\Projects\AsayoDiscordBot\AsayoDis
 C:\Users\Megaport\Documents\Visual Studio 2017\Projects\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\MoonSharp.VsCodeDebugger.pdb
 C:\Users\Megaport\Documents\Visual Studio 2017\Projects\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\clear.bat
 C:\Users\Megaport\Documents\Visual Studio 2017\Projects\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\Asayo.lua
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\AsayoDiscordBot.exe.config
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\obj\Debug\AsayoDiscordBot.exe
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\obj\Debug\AsayoDiscordBot.pdb
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\obj\Debug\AsayoDiscordBot.csprojResolveAssemblyReference.cache
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\exemple.lua
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\Asayo.lua
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\AsayoDiscordBot.exe
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\AsayoDiscordBot.pdb
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\DSharpPlus.dll
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\DSharpPlus.VoiceNext.dll
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\MoonSharp.Interpreter.dll
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\MoonSharp.RemoteDebugger.dll
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\MoonSharp.VsCodeDebugger.dll
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\Newtonsoft.Json.dll
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\DSharpPlus.xml
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\DSharpPlus.VoiceNext.xml
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\MoonSharp.Interpreter.pdb
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\MoonSharp.Interpreter.xml
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\MoonSharp.RemoteDebugger.pdb
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\MoonSharp.VsCodeDebugger.pdb
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\Newtonsoft.Json.xml
+C:\Users\a.u\Desktop\AsayoDiscordBot\AsayoDiscordBot\bin\Debug\Clear.bat

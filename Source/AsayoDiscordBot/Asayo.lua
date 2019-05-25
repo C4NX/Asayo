@@ -1,49 +1,37 @@
 ﻿bot = instance();
 logger = bot:logger();
 
-command_handler = event();
-BasicRespondCommand = {};
+AsayoLuaVersion = "Asayo.Lua 1.1 for ASAYO BETA 1.02";
+
+UpdateLink = "https://www.github.com/C4NX/Asayo/lom.lua";
 
 --Utils
-function registerRespondCommand(command,msg)
-	BasicRespondCommand[command] = msg;
-end
 
+function ImportFunction(value) return import(value); end
 
---Start Function
-function start() 
-	bot:onmessage(onmsg);
-	logger:info("[ASAYO_LUA] Asayo Base Loading...");
-
-	logger:info("[ASAYO_LUA] Loading Modules...");
-
-	for key,value in pairs(files("AsayoModules\\","*.lua")) do
+function LoadModules()
+	for key,value in pairs(files("Modules\\","*.lua")) do
 		import(value);
 	end
-
-	logger:info("[ASAYO_LUA] Asayo Base Loaded :D");
 end
 
---Raw Message Handler
-function onmsg(args,message_obj)
-	
-	local user = message_obj:user();
+--EndUtils
 
-	if(message_obj:isSelf()) then return; end
-	if(message_obj:isBot())then return; end
+function AsayoLua()
+	logger:info("[ASAYO.LUA] " .. AsayoLuaVersion)
+	logger:info("[ASAYO.LUA] LOADING...");
+	logger:warn("[ASAYO.LUA] Report Crash in https://github.com/C4NX/Asayo/");
 
-	if(args[1] == "!!report") then
-		 logger:debug(Or(args[2],"No Value"));
-		 ctx:respond("Report Send !");
-	end
+	LoadModules();
 
-	if(isPrefix(args[1],"!!")) then
-		local command_name = removePrefix(args[1],"!!");
-		logger:debug("[ASAYO_LUA] Command : " .. command_name .. " from " .. tostring(user));
-		command_handler:invoke(command_name,message_obj,user);
-
-		for key,value in pairs(BasicRespondCommand) do if(command_name == key) then message_obj:respond(csformat(value,user:nick())) end end
-	end
+	commands.add("hello",function(ctx) ctx:respond("Hello man :D");  end);
 end
 
-start();
+function Update()
+	logger:info("[ASAYO.LUA] Updating...")
+	local r = api.get(UpdateLink);
+	if(r:isSuccess() == false) then return; end
+	r:readstring()
+end
+
+try(AsayoLua);

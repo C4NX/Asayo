@@ -10,7 +10,7 @@ namespace AsayoDiscordBot
 {
     class Program
     {
-        public static string Version { get; set; } = "Asayo DEBUG-BUILD 1";
+        public static string Version { get; set; } = "Asayo BETA 1.02";
 
         static void Main(string[] args)
         {
@@ -48,7 +48,7 @@ namespace AsayoDiscordBot
             if (!File.Exists("conf.json"))
             {
                 Console.WriteLine("Welcome to Asayo Discord Bot Configuration !!");
-                Console.WriteLine("Press Any Key...");
+                Console.WriteLine("Press any key to start configure the bot...");
                 Console.ReadKey(true);
                 Console.Write("Bot Token : ");
                 var token = Console.ReadLine();
@@ -73,9 +73,22 @@ namespace AsayoDiscordBot
                 if (command.ToLower() == "test") Console.WriteLine("Application is Up");
                 if (command.ToLower() == "save") asayo.Save();
                 if (command.ToLower() == "reload") asayo.Reload();
+
+                if (command.ToLower() == "commands")
+                {
+                    Console.WriteLine("Command Count : " + Asayo.Instance.CommandManager.Count);
+                    foreach (var item in Asayo.Instance.CommandManager.GetCommands())
+                    {
+                        Console.WriteLine(item.Name);
+                    }
+                }
+
                 if (command.ToLower() == "stats")
                 {
                     Console.WriteLine("LuaScript Instance : " + Lua.LuaScript.ScriptsInstances.Count);
+                    Console.WriteLine("Command Count : " + asayo.CommandManager.Count);
+                    Console.WriteLine("Guild in GuildVars Count: " + asayo.GuildVars.FullCount);
+                    Console.WriteLine("Guild Variables Count : " + asayo.GuildVars.FullCount);
                 }
                 if (command.ToLower() == "luas")
                 {
@@ -121,6 +134,7 @@ namespace AsayoDiscordBot
                     Console.WriteLine("\tload <file> : Load lua script");
                     Console.WriteLine("\tlua [id] : Open lua interpreter (id can be not exit)");
                     Console.WriteLine("\tluas : Show loaded script with id");
+                    Console.WriteLine("\tcommands : Show a list of reg commands");
                     Console.WriteLine("\tstats : Show Asayo Statistic");
                     Console.WriteLine("\tban <id> : Ban user to use your bot");
                     Console.WriteLine("\tunban <id> : Un-Ban user to use your bot");

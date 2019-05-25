@@ -39,6 +39,7 @@ namespace AsayoDiscordBot.Lua
             Script s = new Script(CoreModules.Preset_Complete);
             s.Globals.RegisterModuleType<Lua.Modules.BaseModule>();
             s.Globals.RegisterModuleType<Lua.Modules.ApiModule>();
+            s.Globals.RegisterModuleType<Lua.Modules.CommandModule>();
             return s;
         }
 
@@ -68,6 +69,51 @@ namespace AsayoDiscordBot.Lua
             if(exec) Execute();
         }
 
+        static string TString(DynValue v)
+        {
+            switch (v.Type)
+            {
+                case DataType.Nil:
+                    return "Nil";
+                case DataType.Void:
+                    return "Void";
+                case DataType.Boolean:
+                    return v.Boolean.ToString();
+                case DataType.Number:
+                    return v.Number.ToString();
+                case DataType.String:
+                    return v.String;
+                case DataType.Function:
+                    return "Function:" + v.Function.ReferenceID;
+                case DataType.Table:
+                    StringBuilder sb = new StringBuilder();
+                    foreach (var item in v.Table.Pairs)
+                    {
+                        sb.AppendLine(TString(item.Key) + " : " + TString(item.Value));
+                    }
+                    return sb.ToString();
+                case DataType.Tuple:
+                    StringBuilder _sb = new StringBuilder();
+                    foreach (var item in v.Table.Pairs)
+                    {
+                        _sb.AppendLine(TString(item.Value));
+                    }
+                    return _sb.ToString();
+                case DataType.UserData:
+                    return v.ToString();
+                case DataType.Thread:
+                    return v.ToString();
+                case DataType.ClrFunction:
+                    return v.Callback.Name;
+                case DataType.TailCallRequest:
+                    return v.TailCallData.ToString();
+                case DataType.YieldRequest:
+                    return v.YieldRequest.ToString();
+                default:
+                    return v.ToString();
+            }
+        }
+
         public static void ShowErrorWindows(Script s,Exception ex)
         {
             Form _form = new Form();
@@ -76,59 +122,39 @@ namespace AsayoDiscordBot.Lua
             _form.Text = "Opps, Lua Error as Handled";
             TextBox tb = new TextBox() {Name="tb",Text="",Dock=DockStyle.Fill,Multiline=true};
 
-            if (ex is MoonSharp.Interpreter.SyntaxErrorException)
+            StringBuilder sb = new StringBuilder();
+            /*
+            sb.AppendLine("GLOBAL : ");
+            sb.AppendLine(MoonSharp.Interpreter.Serialization.Json.JsonTableConverter.TableToJson(s.Globals));
+            */
+
+            /*sb.AppendLine("GLOBAL : ");
+            foreach (var item in s.Globals.Pairs)
             {
-                var _ex = (MoonSharp.Interpreter.SyntaxErrorException)ex;
-                tb.Text = _ex.DecoratedMessage + "\n";
+                sb.AppendLine(TString(item.Key) + " : " + TString(item.Value));
+            }*/
 
-                if (_ex.CallStack != null)
-                {
-                    foreach (var item in _ex.CallStack)
-                    {
-                        tb.Text += "\nCall Stack : \n";
-                        tb.Text += item.ToString() + "\n";
-                    }
-                }
-
-                tb.Text += "\nSource : " + _ex.Source;
-
-                /*try
-                {
-                    tb.Text += "\nLine : " + File.ReadAllLines(fn)[_ex.]
-                }
-                catch (Exception)
-                {
-                }*/
+            sb.AppendLine("Exception : ");
+            if (ex is InterpreterException)
+            {
+                var _ex = (InterpreterException)ex;
+                sb.AppendLine("Normal Message : " + _ex.Message);
+                sb.AppendLine("Message : " + _ex.DecoratedMessage);
             }
-            else if (ex is MoonSharp.Interpreter.ScriptRuntimeException)
+            else if (ex is ScriptRuntimeException)
             {
-                var _ex = (MoonSharp.Interpreter.ScriptRuntimeException)ex;
-                tb.Text = _ex.DecoratedMessage + "\n";
-
-                if (_ex.CallStack != null)
-                {
-                    foreach (var item in _ex.CallStack)
-                    {
-                        tb.Text += "\nCall Stack : \n";
-                        tb.Text += item.ToString() + "\n";
-                    }
-                }
-
-                tb.Text += "\nSource : " + _ex.Source;
-
-                /*try
-                {
-                    tb.Text += "\nLine : " + File.ReadAllLines(fn)[_ex.]
-                }
-                catch (Exception)
-                {
-                }*/
+                var _ex = (ScriptRuntimeException)ex;
+                sb.AppendLine("Normal Message : " + _ex.Message);
+                sb.AppendLine("Message : " + _ex.DecoratedMessage);
             }
             else
             {
-                tb.Text = ex.ToString();
+                sb.AppendLine("Message : " + ex.Message);
             }
 
+            sb.AppendLine("Exception Type : " + ex.GetType().FullName);
+
+            tb.Text = sb.ToString();
 
             Button OK = new Button() { Dock = DockStyle.Bottom};
             OK.DialogResult = DialogResult.OK;

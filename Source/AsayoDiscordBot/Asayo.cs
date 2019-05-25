@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AsayoDiscordBot.Commands;
+using AsayoDiscordBot.Data;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -19,11 +21,17 @@ namespace AsayoDiscordBot
 
         public Data.BanList BannedUser { get; set; }
 
+        public CommandSystem CommandManager { get; set; }
+
+        public GuildVars GuildVars { get; set; }
+
         public Asayo()
         {
             Logger = Logger.GetLogger<Asayo>();
             Logger.SaveFileLog = true;
             BannedUser = new Data.BanList();
+            CommandManager = new CommandSystem("!!");
+            GuildVars = new GuildVars();
             Instance = this;
         }
 
@@ -48,6 +56,7 @@ namespace AsayoDiscordBot
             Lua.Userdatas.AsayoLuaEvent.CallReload();
             Lua.Userdatas.AsayoObject.OnMessageEvents.Clear();
             Lua.Userdatas.AsayoObject.OnReloadEvents.Clear();
+            CommandManager.RemoveAll();
             foreach (var item in Lua.LuaScript.ScriptsInstances)
             {
                 item.Reload(true);
@@ -63,6 +72,7 @@ namespace AsayoDiscordBot
                 Logger.Info(e.Message);
             };
             Client.MessageCreated += Client_MessageCreated;
+            CommandManager.Register(new TestCommand("test"));
 
             await Client.ConnectAsync();
 
@@ -83,8 +93,8 @@ namespace AsayoDiscordBot
                 table.Table.Append(MoonSharp.Interpreter.DynValue.NewString(item));
             }
             Lua.Userdatas.AsayoLuaEvent.CallOnMessage(table, MoonSharp.Interpreter.UserData.Create(new Lua.Userdatas._DSharpPlus.MessageArgsObject(e)));
-
-
+            
+            CommandManager.Call(CommandManager.CreateContext(e));//Command manager call
 
             return Task.Delay(0);
         }

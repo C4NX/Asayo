@@ -29,7 +29,7 @@ namespace AsayoDiscordBot.Data
             }
         }
 
-        public ulong this[int index] { get => ((IList<ulong>)_list)[index]; set => ((IList<ulong>)_list)[index] = value; }
+        public ulong this[int index] { get { return ((IList<ulong>)_list)[index]; } set { ((IList<ulong>)_list)[index] = value; } }
 
         public int Count => ((IList<ulong>)_list).Count;
 
