@@ -55,6 +55,25 @@ end
 start();
 
 ```
+
+## Guild Data
+```lua
+
+commands.add("getpoint",function(ctx)
+local guild_id = ctx:guildId();--get the guild ID
+local madd = math.random(0,50);--Generate a random value
+
+guildData_exset(guild_id,"money",0);--Create "money" if not exist
+local value = guildData_get(guild_id,"money");--Get the value of "money"
+guildData_set(guild_id,"money",value + madd);--set the value of "money" to value(the last value) + madd(the random value)
+
+ctx:respond("Yes, You win " .. tostring(madd) .. " point for the server :medal: ");--send a message with the money added
+end);
+
+
+```
+
+
 # ToDo
 
 Order | Name | Percent
