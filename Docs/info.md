@@ -1,5 +1,5 @@
-# Asayo 1.0 Doc
-##### doc is bot finiched
+# Asayo 1.02 Doc
+##### doc is not finiched
 
 ## Main Module : 
 
@@ -65,13 +65,30 @@ embed([embed]); = create a new embed
   new_embed1:description("I am fine ;D");
   new_embed2:description("Me too ;D");
 ```
+
+stopwatch() = Create a stopwatch object
+
+guildData_exset(guildid,name,value) = Create a guilddata if name not exist
+
+guildData_set(guildid,name,value) = Set a value
+
+guildData_get(guildid,name) = Get a value
+
+
 ## Api Module :
 
  api.get(url) = Request GET return <HttpResultObject>
 
+## Command Module : 
+
+ commands.add(name,LuaFunction) = Add command
+ commands.remove(name) = Remove a command
+ commands.disable() = Disable Commands
+ commands.enable() = Enable Commands
+
 # Objects : 
 
-==============LuaEventHandler=============
+## ==============LuaEventHandler=============
 
 :add(LuaFunction) = add a function in LuaEventHandler
 ```lua
@@ -109,7 +126,7 @@ embed([embed]); = create a new embed
 <LoggerObject>:fatal("test");
 ```
 
-==============AsayoBotObject==============
+## ==============AsayoBotObject==============
 
 :onmessage(LuaFunction) = regiser a LuaFunction to receive message
 ```lua
@@ -133,7 +150,7 @@ embed([embed]); = create a new embed
   local bot_logger = <AsayoBotObject>:logger();
   bot_logger:info("INFO : MY LOGGER IS HERE");
 ```
-============DiscordUserObject============
+## ============DiscordUserObject============
 
 :nick() = Get the username
 ```lua
@@ -148,7 +165,7 @@ embed([embed]); = create a new embed
   print(<DiscordUserObject>:avatar(1024));--Print the user avatar url as 1024x1024 pixels
 ```
 
-============MessageArgsObject=============
+## ============MessageArgsObject=============
 
 :user() = Get a DiscordUserObject
 ```lua
@@ -178,7 +195,7 @@ embed([embed]); = create a new embed
  <MessageArgsObject>:respond("",myembed);
 ```
 
-============HttpResultObject============
+## ============HttpResultObject============
 
 :isSuccess() = get if request success
 ```lua
@@ -190,6 +207,12 @@ embed([embed]); = create a new embed
 ```lua
  local str = <HttpResultObject>:readstring();
 ```
+
+## ============StopwatchObject============
+
+:start() = Start the Stopwatch
+:stop() = Stop the Stopwatch
+:ms() = return ElapsedMilliseconds
 
 ## Events Args :
 
