@@ -2,7 +2,7 @@
 
 # Comment créer un bot discord *Asayo*
 
-## Parti 1 : Télechargement et configuration
+## Partie 1 : Télechargement et configuration
 
 ### Télecharger le bot
 
@@ -19,7 +19,7 @@ Puis Extaire le bot dans un dossier
 
 __**Asayo Fonctionne :smile:**__
 
-## Parti 2 : Programation Du Bot (LUA)
+## Partie 2 : Programation Du Bot (LUA)
 
 ### Créer un Module Asayo.Lua
 
@@ -28,7 +28,7 @@ __**Asayo Fonctionne :smile:**__
 ![img4](https://image.noelshack.com/fichiers/2019/21/7/1558875661-2019-05-26-14-59-36.png "Créer le dossier Modules")
 ![img5](https://image.noelshack.com/fichiers/2019/21/7/1558876011-2019-05-26-15-02-49.png "Créer un fichier .lua et Ouvrir le fichier")
 
-__**Notre Premiere Commande**__
+__**Notre Première Commande**__
 
 ```lua
 function TestExc(ctx)
