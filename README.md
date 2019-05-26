@@ -6,9 +6,13 @@ The bot is now not very optimized but I work on :D
 
 #### Docs Link : [Page](https://github.com/C4NX/Asayo/blob/master/Docs/info.md)
 
+#### TUTO [FR] : [Page](https://github.com/C4NX/Asayo/blob/master/tutorial_fr.md)
+
 #### Source: [Source](https://github.com/C4NX/Asayo/tree/master/Source)
 
 #### Release: [Release](https://github.com/C4NX/Asayo/tree/master/Source)
+
+
 
 ![THUMB](https://github.com/C4NX/Asayo/blob/master/thumb.PNG "Screenshot")
 
